@@ -1,0 +1,29 @@
+<!-- Use window.open() and .close() to open and close various windows -->
+
+<html>
+<head>
+	<title>Open and close</title>
+	<script type="text/javascript">
+	function openWin() // The open window function
+	{
+		// When the user clicks the open button, a smallWindow is now created.
+		// It's specification are defined by the window issue below
+		// Note that the first "" is blank (which refers to the URL)
+		// The second "" is also blank, as this gives the new window a name
+		// the third "" provides the window with specifications
+		smallWindow = window.open("","","width=300, height=200");
+		smallWindow.document.write("<p>Hi again, old friend!<br /> Glad to see you today</p>");
+		// Note that the above says to write the contents in the document of the new window
+	}
+
+	function closeWin() // The close window function
+	{
+		smallWindow.close();
+	}
+	</script>
+</head>
+<body>
+	<input type="button" value ="Open a small window" onclick="openWin()" />
+	<input type="button" value ="Close the small window" onclick="closeWin()" />
+</body>
+</html>
