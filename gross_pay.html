@@ -1,0 +1,41 @@
+<!-- An employer wants you to create a program that will allow her to enter an employee’s name, 
+hourly rate of pay, number of hours worked in one week, and overtime pay rate. The program should output the employees 
+gross pay (before taxes and deductions). This program could be augmented in the future for multiple objects-->
+
+<html>
+<head>
+	<title>Gross pay</title>
+	<script type="text/javascript">
+	// Note that this snippet is done using an object oriented approach
+	function payroll() // Create a new payroll function
+	{
+		employee1 = new Object(); // Create a new object called employee 1
+		employee1.identity = prompt("Please enter the name of this employee: ", "");
+		employee1.hours = parseFloat(prompt("Please enter how many hours the employee worked this week: ", ""));
+		employee1.basic_rate = 18;
+
+		if (employee1.hours > 40) // If the employee has worked more than 40 hours a week
+		{
+			employee1.overtime_rate = parseFloat(prompt("Please enter " + employee1.identity + " 's overtime pay rate: ", ""));
+			employee1.overtime = employee1.hours - 40;
+			employee1.overtime_due = employee1.overtime * employee1.overtime_rate;
+			total_owed = employee1.overtime_due + (40 * 18); // Calculate the total dollars owed
+		}
+		else // The employee has not worked more than 40 hours a week
+		{
+			total_owed = employee1.hours * 18; // Calculate the total dollars owed
+		}
+
+		document.write("Based on my calculations, " + employee1.identity + " , is due a total of " + total_owed + " dollars!")
+		
+	}
+	</script>
+</head>
+<body>
+	<h1>Welcome to the gross pay program!</h1>
+	<h2>Please click the button when you want to calculate payroll!</h2>
+	<h3>Please note that the employee basic pay rate is $18 dollars an hour.</h3>
+	<h3>Please note also that employees accrue overtime after they have worked 40 hours in one week!</h3>
+	<input type="button" value="Payroll calculator" onclick="payroll()" />
+</body>
+</html>
