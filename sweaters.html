@@ -1,0 +1,27 @@
+<!-- Create a program that calculates the cost of two sweaters that are entered by the user -->
+
+<html>
+<head>
+	<title>Sweater calculator</title>
+	<script type="text/javascript">
+		
+	tax_rate = 0.065; // Create a global constant
+
+	var	sweater1 = parseFloat(prompt("Please enter the price of the first sweater:", "")); // Input the first price
+	var	sweater2 = parseFloat(prompt("Please enter the price of the second sweater:", "")); // Input the second price
+	
+	var	tax_1 = sweater1 * tax_rate;
+	var	tax_2 = sweater2 * tax_rate;
+	var	total_tax = tax_1 + tax_2;
+	var total = sweater1 + sweater2 + total_tax
+
+	document.write("<p> Welcome to the price calculator program! </p>")
+	document.write("<p> The total tax that you owe is" + total_tax + "dollars!</p>")
+	document.write("<p> The total amount that you owe for your purchase is" + total + "dollars!</p>")
+
+	</script>
+</head>
+<body>
+	<!-- Note that there is no body section for this snippet -->
+</body>
+</html>
