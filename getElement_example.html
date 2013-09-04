@@ -1,0 +1,25 @@
+<!-- An example showing you how to access all the content on a web page and use it to display a new message -->
+
+<html>
+<head>
+	<title>Accessing all contents</title>
+	<script type="text/javascript">
+		function getValue()
+		{
+			var dog = document.getElementById("puppy");
+			document.write("Your dog is not a terrier <br />");
+			document.write("Your dog is a ");
+			document.write(dog.innerHTML);
+		}
+	</script>
+</head>
+<body>
+	<h1 id = "puppy" onclick="getValue()">Poodle</h1>
+	<!-- In this example we have a container with the id puppy which contains the breed of the dog-->
+	<!-- Here, dog is set to the content of the container named puppy. The innerHTML property sets or 
+		returns the inner HTML of an element. Thus, we display the inner HTML of the variable dog.
+		Additionally, we use the getElementByID() method to retrieve the contents of the container and
+		then display that content using the write() method. This is of course a simplified example.-->
+
+</body>
+</html>
