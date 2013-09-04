@@ -1,0 +1,20 @@
+<!-- Example showing how to call JavaScript in the head section -->
+
+<html>
+<head>
+	<title>Calling JavaScript</title>
+	<script type="text/javascript">
+		function welcome() // This is the function that will execute once the program opens
+		{
+			alert("Hello there friend! Welcome!"); // Don't forget the semi-colon
+
+		}
+	</script>
+</head>
+<body>
+	<h1>Welcome to a new web page!</h1>
+	<h3>Click the button!</h3>
+	<p><input type ="button" id="myButton" value="Hi there!" 
+		onclick="welcome();"/></p>
+</body>
+</html>
