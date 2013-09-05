@@ -1,0 +1,120 @@
+<html>
+<head>
+	<title>A d3.js Simple Scatter Plot Example</title>
+	<meta charset="utf-8">
+
+	<style>
+	body {
+	  font: 10px sans-serif;
+	}
+
+	.axis path,
+	.axis line {
+	  fill: none;
+	  stroke: #000;
+	  shape-rendering: crispEdges;
+	}
+
+	.dot {
+	  stroke: #000;
+	}
+	</style>
+
+</head>
+<body>
+	<meta charset="utf-8"> <!-- Be sure to include this as the original d3.js file contains greek characters -->
+	<h1>An Example Illustrating A d3.js Scatter Plot</h1> <!-- Define the title -->
+	<p>This chart uses data from a .tsv file (which is just like a .csv file), and plots it! Example implemented by Nathaniel Payne. </p>
+	<hr> <!-- Put in place a horizontal rule between the title and the chart -->
+
+	<script src="http://d3js.org/d3.v3.js"></script>
+	<script type="text/javascript">
+	var margin = {top: 20, right: 20, bottom: 30, left: 40}, // First define the margin object with properties for the four sides
+    width = 960 - margin.left - margin.right, // Define width as the inner dimensions of the chart area
+    height = 500 - margin.top - margin.bottom; // Define height as the inner dimensions of the chart area
+
+	var x = d3.scale.linear() // Constructs a new linear scale with the default domain [0,1] and the default range [0,1].
+	    .range([0, width]); // scale.range([values]) - If values are specified, sets the scale's output range to the specified array of values.
+
+	var y = d3.scale.linear() // Constructs a new linear scale with the default domain [0,1] and the default range [0,1].
+	    .range([height, 0]); // scale.range([values]) - If values are specified, sets the scale's output range to the specified array of values.
+
+	var color = d3.scale.category10(); // Constructs a new ordinal scale with a range of ten categorical colors: #1f77b4 #ff7f0e #2ca02c #d62728 #9467bd #8c564b #e377c2 #7f7f7f #bcbd22 #17becf.
+
+	var xAxis = d3.svg.axis() // Create a new default axis (the x-axis)
+	    .scale(x)
+	    .orient("bottom");
+
+	var yAxis = d3.svg.axis() // Create a new default axis (the y axis)
+	    .scale(y)
+	    .orient("left");
+
+	var svg = d3.select("body").append("svg")
+	    .attr("width", width + margin.left + margin.right)
+	    .attr("height", height + margin.top + margin.bottom)
+	  .append("g")
+	    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+	d3.tsv("sepal.tsv", function(error, data) {
+	  data.forEach(function(d) {
+	    d.sepalLength = +d.sepalLength;
+	    d.sepalWidth = +d.sepalWidth;
+	  });
+
+	  x.domain(d3.extent(data, function(d) { return d.sepalWidth; })).nice();
+	  y.domain(d3.extent(data, function(d) { return d.sepalLength; })).nice();
+
+	  svg.append("g")
+	      .attr("class", "x axis")
+	      .attr("transform", "translate(0," + height + ")")
+	      .call(xAxis)
+	    .append("text")
+	      .attr("class", "label")
+	      .attr("x", width)
+	      .attr("y", -6)
+	      .style("text-anchor", "end")
+	      .text("Sepal Width (cm)");
+
+	  svg.append("g")
+	      .attr("class", "y axis")
+	      .call(yAxis)
+	    .append("text")
+	      .attr("class", "label")
+	      .attr("transform", "rotate(-90)")
+	      .attr("y", 6)
+	      .attr("dy", ".71em")
+	      .style("text-anchor", "end")
+	      .text("Sepal Length (cm)")
+
+	  svg.selectAll(".dot")
+	      .data(data)
+	    .enter().append("circle")
+	      .attr("class", "dot")
+	      .attr("r", 3.5)
+	      .attr("cx", function(d) { return x(d.sepalWidth); })
+	      .attr("cy", function(d) { return y(d.sepalLength); })
+	      .style("fill", function(d) { return color(d.species); });
+
+	  var legend = svg.selectAll(".legend")
+	      .data(color.domain())
+	    .enter().append("g")
+	      .attr("class", "legend")
+	      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+	  legend.append("rect")
+	      .attr("x", width - 18)
+	      .attr("width", 18)
+	      .attr("height", 18)
+	      .style("fill", color);
+
+	  legend.append("text")
+	      .attr("x", width - 24)
+	      .attr("y", 9)
+	      .attr("dy", ".35em")
+	      .style("text-anchor", "end")
+	      .text(function(d) { return d; });
+	});
+
+	</script>
+</body>
+</html>
