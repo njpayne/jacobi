@@ -1,0 +1,112 @@
+<html>
+<head>
+	<title>A d3.js Simple Line Graph Example</title>
+	<meta charset="utf-8">
+	<style>
+	body {
+	  font: 10px sans-serif;
+	}
+
+	.axis path,
+	.axis line {
+	  fill: none;
+	  stroke: #000;
+	  shape-rendering: crispEdges;
+	}
+
+	/* Note that the following snippet would leave the x-axis blank.
+	This was replaced by .x.axis.path and .x.axis.line to create an axis
+
+	.x.axis path {
+  	display: none;
+	} 
+
+	*/
+
+	.x.axis path,
+	.x.axis line {
+	  fill: none;
+	  stroke: #000;
+	  shape-rendering: crispEdges;
+	}
+
+	.line {
+	  fill: none;
+	  stroke: steelblue;
+	  stroke-width: 1.5px;
+	}
+	</style>
+
+</head>
+<body>
+	<meta charset="utf-8"> <!-- Be sure to include this as the original d3.js file contains greek characters -->
+	<h1>An Example Illustrating A d3.js Line Graph</h1> <!-- Define the title -->
+	<p>This chart uses data from a .tsv file (which is just like a .csv file), and plots it! Example created by Nathaniel Payne. </p>
+	<hr> <!-- Put in place a horizontal rule between the title and the chart -->
+
+	<script src="http://d3js.org/d3.v3.js"></script>
+	<script type="text/javascript">
+	var margin = {top: 20, right: 20, bottom: 30, left: 50}, // First define the margin object with properties for the four sides
+	    width = 960 - margin.left - margin.right, // Define width as the inner dimensions of the chart area
+	    height = 500 - margin.top - margin.bottom; // Define height as the inner dimensions of the chart area
+
+	var parseDate = d3.time.format("%d-%b-%y").parse; // Parse the time date data base on the values that it includes
+
+	// D3's time scale is an extension of d3.scale.linear that uses JavaScript Date objects as the domain representation.
+	var x = d3.time.scale() // Constructs a new time scale with the default domain and range; the ticks and tick format are configured for local time.
+	    .range([0, width]); // scale.range([values]) - If values are specified, sets the scale's output range to the specified array of values.
+
+	var y = d3.scale.linear() // Constructs a new linear scale with the default domain [0,1] and the default range [0,1].
+	    .range([height, 0]); // scale.range([values]) - If values are specified, sets the scale's output range to the specified array of values.
+
+	var xAxis = d3.svg.axis() // Create a new default axis.
+	    .scale(x) // If scale is specified, sets the scale and returns the axis. If scale is not specified, returns the current scale which defaults to a linear scale. If orientation is specified, sets the orientation and returns the axis.
+	    .orient("bottom"); // bottom - horizontal axis with ticks below the domain path
+
+	var yAxis = d3.svg.axis() // Create a new default axis.
+	    .scale(y) // If scale is specified, sets the scale and returns the axis. If scale is not specified, returns the current scale which defaults to a linear scale. If orientation is specified, sets the orientation and returns the axis.
+	    .orient("left"); // vertical axis with ticks to the left of the domain path
+
+	var line = d3.svg.line() // Constructs a new line generator with the default x- and y-accessor functions
+	    .x(function(d) { return x(d.date); })
+	    .y(function(d) { return y(d.close); });
+
+	var svg = d3.select("body").append("svg")
+	    .attr("width", width + margin.left + margin.right)
+	    .attr("height", height + margin.top + margin.bottom)
+	  .append("g")
+	    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+	d3.tsv("aapl.tsv", function(error, data) { // Note that this references the aapl.tsv data sheet
+	  data.forEach(function(d) {
+	    d.date = parseDate(d.date);
+	    d.close = +d.close;
+	  });
+
+	  x.domain(d3.extent(data, function(d) { return d.date; }));
+	  y.domain(d3.extent(data, function(d) { return d.close; }));
+
+	  svg.append("g")
+	      .attr("class", "x axis")
+	      .attr("transform", "translate(0," + height + ")")
+	      .call(xAxis);
+
+	  svg.append("g")
+	      .attr("class", "y axis")
+	      .call(yAxis)
+	    .append("text")
+	      .attr("transform", "rotate(-90)")
+	      .attr("y", 6)
+	      .attr("dy", ".71em")
+	      .style("text-anchor", "end")
+	      .text("Price ($)");
+
+	  svg.append("path")
+	      .datum(data)
+	      .attr("class", "line")
+	      .attr("d", line);
+	});
+
+	</script>
+</body>
+</html>
