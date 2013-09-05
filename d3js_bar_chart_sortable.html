@@ -1,0 +1,147 @@
+<html>
+<head>
+	<title>A d3.js Sortable Bar Chart Example</title>
+	
+	<style> 
+	body {
+	  font: 10px sans-serif;
+	}
+
+	.axis path,
+	.axis line { /* Determine the style for the axis line*/
+	  fill: none;
+	  stroke: #000;
+	  shape-rendering: crispEdges; /* The shape-rendering property is an SVG attribute, used here to make sure our
+	   axis and its tick mark lines are pixel-perfect. */
+	}
+
+	.bar { /* Determine the style for the individual bars*/
+	  fill: steelblue;
+	}
+
+	.x.axis path {
+	  display: none;
+	}
+	</style>
+
+</head>
+<body>
+	
+	<h1>An Example Illustrating A Sortable d3.js Bar Chart</h1> <!-- Define the title -->
+	<p>This chart uses data from a .tsv file (which is just like a .csv file), and plots it! Example created by Nathaniel Payne. </p>
+	<label><input type="checkbox"> Sort values</label> <!-- Add this to enable sorting -->
+	<hr> <!-- Put in place a horizontal rule between the title and the chart -->
+
+	<script src="http://d3js.org/d3.v3.min.js"></script>
+	<script type="text/javascript">
+
+	// Reference re the margins can be found here: http://bl.ocks.org/mbostock/3019563
+	var margin = {top: 20, right: 20, bottom: 30, left: 40}, // First define the margin object with properties for the four sides 
+	// The definition of the margins is clockwise from the top, as in CSS
+    width = 960 - margin.left - margin.right, // Define width and height as the inner dimensions of the chart area
+    height = 500 - margin.top - margin.bottom;
+
+	var formatPercent = d3.format(".0%"); // Returns a new format function with the given string specifier.
+		// Note that the format specifier is modelled after Python's 3.1 built in format specifier
+
+	var x = d3.scale.ordinal() // This constructs a new ordinal scale with an empty domain and an empty range.
+		// The ordinal scale is invalid (always returning undefined) until an output range is specified.
+	    .rangeRoundBands([0, width], .1); // Guarantees that the band width and offset are integer values, so as to avoid antialiasing artifacts.
+
+	var y = d3.scale.linear() // Make the scale for the y axis (the vertical axis), linear
+	    .range([height, 0]); // Constructs a new linear scale with the default domain [0,1] and the default range [0,1].
+
+	var xAxis = d3.svg.axis() // d3.svg.axis creates a new default axis
+	    .scale(x) // Axis.scale(x), or axis(selection) generally, applies the axis to a new selection or transition
+	    // Note that the selection must contain a .svg or .g element
+	    .orient("bottom"); // axis.orient([orientation]) sets the orientation and returns the orientation
+	    // The default orientation is bottom. Top, left, right are also possibilities
+
+	var yAxis = d3.svg.axis() //d3.svg.axis create a new default axis
+	    .scale(y) // Axis.scale(x), or axis(selection) generally, applies the axis to a new selection or transition
+	    .orient("left") // axis.orient([orientation]) sets the orientation and returns the orientation
+	    .tickFormat(formatPercent);
+
+	var svg = d3.select("body").append("svg") // Define svg as a G element that translates the origin to the top-left corner of the chart area.
+	    .attr("width", width + margin.left + margin.right)
+	    .attr("height", height + margin.top + margin.bottom)
+	  .append("g")
+	    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+	// D3 provides built-in support for parsing comma-separated values, tab-separated values and arbitrary delimiter-separated values.
+	// These tabular formats are popular with spreadsheet programs such as Microsoft Excel. Tabular formats are often more space-efficient than JSON, // which can improve loading times for large datasets.
+
+	// Tab-separated values are equivalent to comma-separated values, except the tab character is used as a delimiter rather than the comma
+	d3.tsv("data.tsv", type, function(error, data) { // d3.tsv(url[, accessor][, callback]) - Equivalent to d3.csv, but for tab-separated values.
+	  x.domain(data.map(function(d) { return d.letter; })); // Take the values of data that we have and to fit them into the space we have available. 
+	  y.domain([0, d3.max(data, function(d) { return d.frequency; })]); // Take the values of data that we have and to fit them into the space we have available. 
+
+	 // While I did not use it here, note that d3.csv(url[, accessor][, callback]) issues an HTTP GET request for the comma-separated values (CSV)
+	 // file at the specified url.
+
+	  svg.append("g") // Append a new g element
+	      .attr("class", "x axis")
+	      .attr("transform", "translate(0," + height + ")")
+	      .call(xAxis);
+
+	  svg.append("g")
+	      .attr("class", "y axis")
+	      .call(yAxis)
+	    .append("text")
+	      .attr("transform", "rotate(-90)")
+	      .attr("y", 6)
+	      .attr("dy", ".71em")
+	      .style("text-anchor", "end")
+	      .text("Frequency");
+
+	  svg.selectAll(".bar") // The selectAll operator takes a selector string, and returns a selection
+	      .data(data)
+	    .enter().append("rect")
+	      .attr("class", "bar")
+	      .attr("x", function(d) { return x(d.letter); })
+	      .attr("width", x.rangeBand())
+	      .attr("y", function(d) { return y(d.frequency); })
+	      .attr("height", function(d) { return height - y(d.frequency); });
+
+	  // The following section adds a dynamic check box to the graph which creates a transition
+
+	  d3.select("input").on("change", change);
+
+	  var sortTimeout = setTimeout(function() {
+	    d3.select("input").property("checked", false).each(change); // Note taht if checked is set to true
+	    // then the graph will sort automatically on load ...
+	  }, 2000);
+
+	  function change() {
+	    clearTimeout(sortTimeout);
+
+	    // Copy-on-write since tweens are evaluated after a delay.
+	    var x0 = x.domain(data.sort(this.checked
+	        ? function(a, b) { return b.frequency - a.frequency; }
+	        : function(a, b) { return d3.ascending(a.letter, b.letter); })
+	        .map(function(d) { return d.letter; }))
+	        .copy();
+
+	    var transition = svg.transition().duration(750),
+	        delay = function(d, i) { return i * 50; };
+
+	    transition.selectAll(".bar")
+	        .delay(delay)
+	        .attr("x", function(d) { return x0(d.letter); });
+
+	    transition.select(".x.axis")
+	        .call(xAxis)
+	      .selectAll("g")
+	        .delay(delay);
+	  	}
+
+	});
+
+	function type(d) {
+	  d.frequency = +d.frequency;
+	  return d;
+	}
+	</script>
+
+</body>
+</html>
