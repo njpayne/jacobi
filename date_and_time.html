@@ -1,0 +1,34 @@
+<html>
+	<head>
+		<meta charset = "utf-8">
+		<title>Date and time</title>
+		<script = "text/javascript">
+			var name; // Declare the variable
+			var now = new Date(); // Create a new date object
+			var hour = now.getHours(); // current hour (0-23)
+			
+			name = window.prompt("Please enter your name", "");
+			
+			// determine whether it is currently morning
+			if	(hour < 12)
+				document.writeln("<h1>Good morning, ");
+			
+			if	(hour >= 12) // determine whether the time is in PM
+			{
+				// convert to a 12-hour clock
+				hour = hour - 12;
+				// determine whether it is before 6pm
+				if (hour < 6)
+					document.writeln("<h1> Good afternoon, ");
+				// determine whether it is after 6pm
+				if (hour >= 6)
+					document.writeln("<h1> Good evening, ");				
+			} // end if
+			
+			document.writeln(name + ", welcome to COMP 2051!</h1>"); // output
+							
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
