@@ -1,0 +1,26 @@
+<!-- Write a program that calculates an average of miles per gallon for a 
+vehicle over the history of miles/gallons factor. -->
+
+<html>
+<head>
+	<meta charset = "utf-8">
+	<title>Mileage Calculator</title>
+	
+	<h1>Welcome To the Gas Guzzler Application</h1> <!-- Define the title -->
+	<p>This program calculates your overall miles per gallon travelled!</p>
+	<hr> <!-- Put in place a horizontal rule between the title and the chart -->
+
+	<script = "text/javascript">
+		var miles = parseInt(prompt("Please enter the total number of miles that you drove this past week!", ""))
+		var gallons = parseInt(prompt("Please enter the total number of gallons of gas that you actually used to drive this far!"))
+		var average = miles / gallons; // Calculate the total miles / gallon that you actually travelled
+
+		document.writeln("During this past week, you averaged a total of " + average + "miles per gallon!")
+		// need to add formatting to the total miles per gallon travelled!
+
+	</script>
+</head>
+<body>
+	<!-- There is no body section in this script -->
+</body>
+</html>
