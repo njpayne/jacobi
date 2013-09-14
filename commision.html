@@ -1,0 +1,56 @@
+<!-- Write a program that computes the commission and total payment of sales of an employee. -->
+<html>
+<head>
+	<meta charset ="utf-8">
+	<title>Commission and payment calculator</title>
+	<h1>Welcome to the Commission and Payment Calculator</h1>
+	<p>This program will help you calculate the total commission for your employees</p>
+	<hr> <!-- Insert a horizontal rule -->
+
+	<script = "text/javascript">
+	var counter = 1; // Create an initial counter variable that is equal to 0
+	var input; // Create an empty imput variable
+	var sale = new Array(); // Create a new array that will hold the sales values
+	var total = 0; // Create a new empty total variable
+	var earnings; // Create an emtpy variable that will hold the total commission earned
+
+	document.writeln("Welcome to the commision and payment calculator! <br/> \
+		To use this program, please enter the commission rate and individual gross sales earned by an employee!");
+		// Note that <br/> puts a line break in JavaScript using text
+		// Note also that \ allows you to write text over multiple lines
+	input = prompt("Did you sell any merchandise today? (Type 'y' for yes and 'n' for no)", "");
+	while (input != "n")
+  	{
+  		// Note that the initial value of the counter is 1
+  		sale_item = parseFloat(prompt("Please enter the sale price of item number " + counter + " :", ""));
+  		sale[(counter - 1)] = sale_item; // Append the new sale item to the array
+  		// Note that the method .push() appends values of an array
+  		counter += 1 // Add 1 to the total value of the counter
+  		input = prompt("Would you like to enter a new sale item? (Type 'y' for yes and 'n' for no)", "");
+  	}
+
+  	if (counter > 1) // If the salesperson actually sold something
+  	{
+	  	for (var i = 0; i < sale.length; i++) { // Loop through all the elements within the salesperson array
+	  		total += sale[i]; // Add the value within the sale array to the total
+	  	};
+
+	  	var commission = parseFloat(prompt("Please enter the commission rate that you receive (e.g. 6.5% = 6.5): ", "")); // Enter the commission rate
+	  	earnings = total * (commission / 100) // Calculate the total commission earnings
+
+	  	document.writeln("<br/><br/> Based on our review, you sold a total of " + (counter - 1) + " items. \
+	  		<br/> This means that you earned a total of $" + earnings.toFixed(2) + " dollars in commission")
+  	}
+
+  	else // The salesperson did not actually sell something
+  	{
+  		document.writeln("<br/><br/> Based on the information you provided, you did not sell anything today. <br/> \
+  			This also means that you did not earn any commission. Please work harder tomorrow!");
+  		// Note that <br/><br/> inserts a blank line in the output
+  	} 
+	</script>
+</head>
+<body>
+	<!-- There is no body section in this code snippet -->
+</body>
+</html>
