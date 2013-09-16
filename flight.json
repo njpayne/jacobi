@@ -1,0 +1,105 @@
+[{
+    "YEAR": 2012,
+    "MONTH": 1,
+    "MMM": "JAN",
+    "Total_Flights": 30,
+    "Completed": 21,
+    "Canceled": 7,
+    "Aborted": 2
+}, {
+    "YEAR": 2012,
+    "MONTH": 2,
+    "MMM": "FEB",
+    "Total_Flights": 54,
+    "Completed": 28,
+    "Canceled": 20,
+    "Aborted": 6
+}, {
+    "YEAR": 2012,
+    "MONTH": 3,
+    "MMM": "MAR",
+    "Total_Flights": 39,
+    "Completed": 25,
+    "Canceled": 12,
+    "Aborted": 2
+}, {
+    "YEAR": 2012,
+    "MONTH": 4,
+    "MMM": "APR",
+    "Total_Flights": 27,
+    "Completed": 21,
+    "Canceled": 6,
+    "Aborted": 0
+}, {
+    "YEAR": 2012,
+    "MONTH": 5,
+    "MMM": "MAY",
+    "Total_Flights": 35,
+    "Completed": 21,
+    "Canceled": 12,
+    "Aborted": 2
+}, {
+    "YEAR": 2012,
+    "MONTH": 6,
+    "MMM": "JUN",
+    "Total_Flights": 15,
+    "Completed": 10,
+    "Canceled": 4,
+    "Aborted": 1
+}, {
+    "YEAR": 2012,
+    "MONTH": 7,
+    "MMM": "JUL",
+    "Total_Flights": 42,
+    "Completed": 18,
+    "Canceled": 21,
+    "Aborted": 3
+}, {
+    "YEAR": 2012,
+    "MONTH": 8,
+    "MMM": "AUG",
+    "Total_Flights": 43,
+    "Completed": 29,
+    "Canceled": 8,
+    "Aborted": 6
+}, {
+    "YEAR": 2012,
+    "MONTH": 9,
+    "MMM": "SEP",
+    "Total_Flights": 28,
+    "Completed": 20,
+    "Canceled": 8,
+    "Aborted": 0
+}, {
+    "YEAR": 2012,
+    "MONTH": 10,
+    "MMM": "OCT",
+    "Total_Flights": 43,
+    "Completed": 24,
+    "Canceled": 18,
+    "Aborted": 1
+}, {
+    "YEAR": 2012,
+    "MONTH": 11,
+    "MMM": "NOV",
+    "Total_Flights": 35,
+    "Completed": 18,
+    "Canceled": 17,
+    "Aborted": 0
+}, {
+    "YEAR": 2012,
+    "MONTH": 12,
+    "MMM": "DEC",
+    "Total_Flights": 45,
+    "Completed": 9,
+    "Canceled": 32,
+    "Aborted": 4
+}, {
+    "YEAR": 2013,
+    "MONTH": 1,
+    "MMM": "JAN",
+    "Total_Flights": 49,
+    "Completed": 4,
+    "Canceled": 43,
+    "Aborted": 2
+}]
