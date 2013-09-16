@@ -1,0 +1,40 @@
+<!-- A class of ten students took a quiz. The grades (integers in the range 0 to 100) for this quiz are available to you. Determine the class average on the quiz. -->
+
+<html>
+<head>
+	<meta charset = "utf-8">
+	<title>Grade Averaging Program</title>
+	<style></style>
+	
+	<h1>Welcome to the average calculation program</h1>
+	<p>This program calculates the average grades for a program</p>
+	<hr> <!-- include a horizontal rule for the program -->
+
+	<script = "text/javacript">
+		var grades = [] // Create an empty array to hold the grades
+		var counter = 0; // Create a new counter
+		var total = 0 // Create a new total variable
+
+		document.writeln("Welcome to the grade entry program!")
+		var ask = prompt("Would you like to enter a new grade (y for yes and n for no):", "")
+		while (ask != "n"){
+			var grade = parseFloat(prompt("Please enter the first grade of the user from 0-100: ",""));
+			grades[counter] = grade; // Put the grade into the array in the relative position specified
+			var ask = prompt("Would you like to enter a new grade (y for yes and n for no):", "");
+			counter += 1; // Add 1 to the counter
+		}
+
+		for (var i = 0; i < grades.length; i++) { // Loop through each of the elements in the array
+			var total = total + grades[i]; // Add each array element to the total
+		}
+
+		var average = total / counter; // Calculate the average for the variables that are entered
+
+		document.writeln("<br>A total of " + counter + " students wrote the quiz that you created! \
+			<br> The average grade for the quiz is " + average.toFixed(2) + ".")
+	 </script>
+</head>
+<body>
+	<!-- There is no body section here --> 
+</body>
+</html>
