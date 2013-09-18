@@ -1,0 +1,34 @@
+<html>
+<head>
+	<meta charset = "UTF-8">
+	<title>Temperature program</title>
+	<style>
+		body {
+				font: 10px sans-serif;
+			}
+	</style>
+	<script = "text/javascript">
+		function getTemp () {
+			// Create the base temperature function
+			var temp = parseFloat(prompt("What is the temperature outside (in F)?", ""));
+
+			if (temp < 32) {
+				document.writeln("It is currently " + temp.toFixed(0) + " degrees F outside! <br/> \
+					There is a good chance that it may snow today! <br/> \
+					You should definitely wear snow boots!");
+			}
+			else {
+				document.writeln("It is currently " + temp.toFixed(0) + " degrees F outside! <br/> \
+					It looks very unlikely that it will snow today! <br/> \
+					Forget your boots and throw on a tank top!");
+			}
+		}
+	</script>
+</head>
+<body>
+	<h1> Welcome to the temperature input application </h1>
+	<p> The application helps you dress properly! Created by Nathaniel Payne </p>
+	<hr> <!-- Insert a horizontal rule -->
+	<input type = "button" id = "temperature" value = "What is the temperature today?" onclick = "getTemp();" />
+	</body>
+</html>
