@@ -1,0 +1,48 @@
+<!-- Ask the uer if they want to add or subtract 2 numbers. If they choose add, add the numbers. On the other hand, if the user chooses subtract, clarify which numbers they want to subtract from each other. -->
+
+<html>
+<head>
+	<meta charset = "utf-8">
+	<title>Addition program</title>
+	<style>
+		body {
+				font: 10px sans-serif;
+			}
+	</style>
+	<script type="text/javascript">
+		function calculator()
+		{
+			var	ask = prompt("Would you like to add or subtract (a or s)?","");
+			var num1 = parseFloat(prompt("Please enter number 1:", "")); // Get number 1
+			var num2 = parseFloat(prompt("Please enter number 2:", "")); // Get number 2
+			var total = 0; // Create a null numeric variable
+			
+			if (ask == "a") 
+				{
+					total = num1 + num2;
+					alert("You chose to do addition! \n The sum of the two numbers is " + total + ".");// Print the output
+				}
+			else
+			{
+				alert("You entered the following numbers: " + num1 + " and " + num2 + ".");
+				var from = prompt("Which number would you like to subtract from?","");
+				if (from == num1) 
+					{
+						total = num1 - num2;	
+					}
+				else
+				{
+					total = num2 - num1;	
+				};
+				alert("You chose to do subtraction! \n The difference of the two numbers is " + total + ".");// Print the output
+			};	
+		};
+	</script>
+</head>
+<body>
+	<h1>Welcome to the Addition or Subtraction Application</h1>
+	<p>Enter two numbers and then decide whether to add or subtract them! Created by Nathaniel Payne</p>
+	<hr>
+	<input type="button" id = "addition" value = "Press to start program" onclick = "calculator();" />
+</body>
+</html>
