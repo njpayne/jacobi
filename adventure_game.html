@@ -1,0 +1,57 @@
+<!-- Welcome to the troll adventure game.
+Let us have a virtual battle. Imagine that you are writing code for an online adventure game. You come to a battle, and the winner is determined as follows. If the player arrives with more points than the troll is assigned, the player wins. If the player arrives with fewer points than the troll but has acquired a gun or sword in the game, the player also wins. Finally, if the player and the troll have the same number of points, the battle is declared a tie. A tie is also declared if the player cannot win but has wings or has acquired flying dust and flies away. In all other cases, the player loses. Let the program assign the troll 50 points. -->
+
+<html>
+<head>
+	<meta charset = "utf-8">
+	<title>Adventure Game</title>
+	<style type="text/css"></style>
+	<script type="text/javascript">
+		function trollbattle() 
+		{
+			var	trollpoints = 50; // The initial value
+			var points = parseInt(prompt("How many points do you have?", ""));
+			if (points < trollpoints)
+			{
+				var gun = prompt("Do you have a gun? (y or n)?" ,"");
+				var sword = prompt("Do you have a sword? (y or n)?","");
+				var wings = prompt("Do you have wings? (y or n)?","");
+				var dust = prompt("Do you have dust? (y or n)?","");
+				if (gun == 'n' && wings == 'n' && sword == 'n' && dust == 'n') 
+					{
+						document.write("<h3>You Lose ......</h3>");
+						document.write("<img src = 'troll.jpg' />");
+					}
+				else if (gun == 'y' || sword == 'y') // Note that || equals "or"
+				{
+					document.write("<h3>You are the winner! Congratulations!</h3>");
+					document.write("<img src = 'victor.jpg' />");
+				}
+				else if (wings == 'y' || dust == 'y')
+				{
+					document.write("<h3>You can fly away! Battle again later!</h3>");
+					document.write("<img src = 'flyaway.jpg' />");
+				}
+			} 
+			else if (points == trollpoints)
+			{
+				document.write("<h3>There is a tie! Battle again later!</h3>");
+				document.write("<img src = 'victor.jpg' />");
+				document.write("<img src = 'troll.jpg' />");
+			}
+
+			else // You are the winner, since your points are more than the trolls!
+			{
+				document.write("<h3>You are the winner! Congratulations!</h3>");
+				document.write("<img src = 'victor.jpg' />");
+			}
+		};
+	</script>
+</head>
+<body>
+	<h1> Welcome to the Troll Adventure Game</h1>
+	<p> This program will take you into Battle! Created by Nathaniel Payne </p>
+	<hr>
+	<input type = "button" id = "troll" value = "Click here to Battle!" onclick = "trollbattle();"/>
+</body>
+</html>
