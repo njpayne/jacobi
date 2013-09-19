@@ -1,0 +1,39 @@
+<!-- Generate and fill a table using a while loop. Ask the user for the name of the player and the points that the player has. Then, extend the table each time a new line is entered. -->
+
+<html>
+<head>
+	<meta charset = "utf-8">
+	<title>While loop example</title>
+	<style type="text/css">
+			body {
+				font: 10px sans-serif;
+			}
+			</style>
+	<script type="text/javascript">
+		function getPlayers()
+		{
+			var player = prompt("Please enter the name of a player:","");
+			document.write('<table width = "40%" border = "1">'); // Create the table
+
+			while (player != "done")
+			{
+				var points = prompt("Please enter the number of points the player has:","");
+				document.write('<tr>');
+				document.write('<td width = "50">' + player + '</td>');
+				document.write('<td width = "50">' + points + '</td>');
+				document.write('</tr>');
+				player = prompt("Please enter the name of a player or enter 'done' when you are finished:","");
+			}
+			document.write('</table>');
+		}
+	</script>
+</head>
+<body>
+	<h1> Welcome to the while loop table demonstration!</h1>
+	<p> This program will show you how to populate a table using a while loop! Created by Nathaniel Payne </p>
+	<hr>
+	<h2>Today's Players</h1>
+	<h3> Click to enter player's names</h3>
+	<input type = "button" id = "loopdemo" value = "Click to populate table!" onclick = "getPlayers();" />
+</body>
+</html>
