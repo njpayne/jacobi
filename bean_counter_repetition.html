@@ -1,0 +1,31 @@
+<!-- Create a for loop that counts out 5 beans on a page. Use the bean image that is provided. -->
+<html>
+<head>
+	<meta charset = "utf-8">
+	<title>Bean Counter</title>
+		<style type="text/css">
+			body {
+				font: 10px sans-serif;
+			}
+			</style>
+	<script type="text/javascript">
+		function countBeans()
+		{
+			var beans = parseInt(prompt("How many beans would you like to display?",""));
+			beanImage = ("<img src = 'blue_bean.jpg'>");
+			document.write("<table align = 'center'><tr><td>");
+			document.write("<h1>&nbsp;<br />Here are your beans!</h1>");
+
+			for (var i = 0; i < beans; i++) 
+			{
+				document.write(beanImage + "&nbsp; &nbsp;");
+			};
+			document.write("</td></tr></table>");
+		}
+	</script>
+</head>
+<body>
+	<h1>Count Beans!</h1>
+	<input type = "button" id = "bean" value = "Click to count beans!" onclick = "countBeans();" />
+</body>
+</html>
