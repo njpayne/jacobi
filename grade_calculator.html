@@ -1,0 +1,37 @@
+<!-- Write a program that displays a students grade on an exam. The exam has 21 questions. The basic score is based on the first 10 question, with 5 points being given for each correct answer. The last question is an extra credit option worth 6 to 10 points. Ask the student for the initial score on the exam. Then, ask them for the score on the extra credit portion. -->
+
+<html>
+<head>
+	<meta charset = "utf-8">
+	<title>Grade Calculator</title>
+	<style type="text/css">
+			body {
+				font: 10px sans-serif;
+			}
+	</style>
+	<script type="text/javascript">
+		function calculator() 
+		{
+			var outof = parseFloat(prompt("What was the exam out of?",""));
+			var grade = parseFloat(prompt("Please enter the grade (numeric) of the student",""));
+			var	ask = prompt("Did the user complete the bonus question? (y or n)", "");
+			var total = grade; // This is the total for the users grade
+
+			if (ask == "y") 
+			{
+				var	bonus = parseFloat(prompt("Please enter the students grade on the bonus question:",""));
+				total = grade + bonus;
+			} // Note that we removed the else{} statement in favor of a simpler if implementation
+			
+			var percentage = total / outof * 100;
+			alert("The student's final percentage is " + percentage.toFixed(2) + " percent!");
+		}; // Put everything inside this function
+	</script>
+</head>
+<body>
+	<h1>Welcome to the Grade Calculator</h1>
+	<p>Please input the users grades to see their overall percentage. Program written by Nathaniel Payne.</p>
+	<hr> <!-- This inserts a horizontal rule -->
+	<input type = "button" id = "calculator" value = "Input Grades" onclick = "calculator();"/>
+</body>
+</html>
