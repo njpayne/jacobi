@@ -1,0 +1,69 @@
+<html>
+<head>
+	<meta charset = "utf-8">
+	<title>College liscensing</title>
+</head>
+	<style type="text/css">
+		body {
+				font: 10px sans-serif;
+			}
+	</style>
+	<script type="text/javascript">
+		// Input each test result (i.e., a 1 or a 2). Display the message “Enter result” on the screen each time the program requests another test result.
+		// Count the number of test results of each type.
+		// Display a summary of the test results indicating the number of students who passed and the number of students who failed.
+		// If more than eighty percent of the students passed the exam, print the message “Raise tuition.”
+		function testresult()
+		{
+			var limit = parseInt(prompt("Please write the number of user that you would like to enter:", "")); // Allowing the user choice
+			var grades = new Array(); // Create a new array to hold the user data
+			var percent_pass; // Create a new empty variable
+
+			for (var i = 0; i < limit; i++) 
+			{ // Allow the user to enter the grades for each of the users
+				 var test_result = parseInt(prompt("Please enter the test result of the user:", "")); // Test result
+				grades[i] = test_result;
+			} // endfor
+
+			var	pass = 0; // Count the total number of passes - Set the counter equal to 0
+			var fail = 0; // Count the total number of failures - set the counter equal to 0
+
+			for (var j = 0; j < grades.length; j++) 
+			{
+				
+				if (grades[j] == "1") 
+				{
+					pass = pass + 1; // Add 1 to the pass counter
+				} // end it
+				else 
+				{
+					fail = fail + 1;
+				}
+			}; // end for loop
+		
+		percent_pass = pass / limit * 100
+
+		document.write("A total of " + limit + " students wrote the exam!")
+		document.write("<br/>The total number of students who passed the exam was " + pass + " !")
+		document.write("<br/>The total number of students who failed the exam was " + fail + " !")
+		document.write("<br/>Analyzing the results, it appears that a total of " + percent_pass.toFixed(2) + " percent of your students wrote the exam!")
+		
+		if (percent_pass > 80) 
+			{
+				document.write("<br/>Based on this result, you should seriously consider increasing tuition!")
+			}
+		else
+			{
+				document.write("<br/>Based on this result, you do not need to consider increasing your tuition!")
+			}		
+
+		}; // end function
+		</script>
+<body>
+	<h1>Realestate Test Brokerage Program</h1>
+	<p>Please enter the results from your realestate test for each user. Application created by Nathaniel Payne</p>
+	<p>Please note that a student should get a 1 if they passed the exam, and a 2 if they failed</p>
+	<hr> <!-- Input a horizontal rule for the website -->
+	<input type = "button" id = "test"  value = "Enter Individual Results" onclick = "testresult();" /> 
+</body>
+</html>
