@@ -1,0 +1,53 @@
+<!-- Write a script that finds the smallest of several non-negative integers. Assume that the first value read specifies the number of values to be input from the user. -->
+<html>
+	<head>
+		<meta charset = "utf-8">
+		<title>Smallest Value Program</title>
+		<style type="text/css">
+			body
+			{
+				font: 10px sans-serif;
+			}
+		</style>
+		<script type="text/javascript">
+			function smallest() // Define the initial value of the function
+			{
+				var counter = 0; // Start the counter at zero
+				var input = prompt("Please enter a number between 1 and 100: ",""); // Enter the first integer
+				var values = new Array(); // Create a new array which you can add values to ...
+				while (input != 'done') // Confirm that the user doesn't want to exit
+				{
+					input = parseInt(input) // Change the inputted value to a float
+					values[counter] = input; // add the inputted values to the counter
+					counter = counter + 1; // add 1 to the counter which has an initial value of zero
+					var input = prompt("Please enter a number between 1 and 100 (type 'done' to exit): ",""); // Enter the first integer
+				}
+				document.write("Thank you for using the smallest value calculator!");
+				
+				values.min = function (values) // In this case, we extend the array prototype and invoke the underlying Math.min method
+				{
+    				return Math.min.apply(Math, values);
+				};
+				var minimum = values.min(values);
+				document.write("<br>The smallest value of the array you entered is: " + minimum + " .")
+
+				/* As John Resig noter, here, we use JavaScript's apply function to pass in an array of unlimited arguments						
+				    Array.max = function( array ){
+				        return Math.max.apply( Math, array );
+				    };
+				     
+				    Array.min = function( array ){
+				        return Math.min.apply( Math, array );
+				    };
+				*/
+			}
+		</script>
+	</head>
+	<body>
+		<h1>Welcome to the Smallest Value Function </h1>
+		<p>This program helps you calculate the smallest value of an array of inputted numbers. Please enter integers between 0 and 100 only!</p>
+		<p>Program created by Nathaniel Payne. Note that error validation was not added to this simplified example.</p>
+		<hr>
+		<input type = "button" id = "smallest" value = "Click to find the smallest value in an array!" onclick = "smallest();" />
+	</body>
+</html>
