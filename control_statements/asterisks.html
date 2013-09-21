@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<title>Asterisk program</title>
+		<style type="text/css">
+			body
+			{
+				font:10px sans-serif;
+			}
+		</style>
+		<script type="text/javascript">
+			function decreasing()
+			{
+				var width = 10; // Deterine the width of the pyramid
+				var height = 10; // Determine the desired height of the pyramid
+
+				for (var x = 1; x < height + 1; x++) // This for loop determines the height of the image .. 
+				{   //execute nested loop					
+				    for (var y = width; y > 0; y--)
+				    {
+				    	document.write("*"); // Write out a pattern of asterisks				    	
+				    }
+				    document.write("<br/>"); // Add a break after each line is written */				    
+				    
+				    width = width - 1;// Take 1 away from the width after the first run through
+       			} //end for
+			};
+		</script>
+	</head>
+	<body>
+		<h1>Welcome to the asterisk drawing program!</h1>
+		<p1>This program draws out asterisks in JavaScript using nested loops! Program written by Nathaniel Payne</p1>
+		<p1>Note that this program can and should be extended within your homework to deal with the other potential diagrams presented!</p1>
+		<hr>
+		<input type = "button" id = "repeat" value = "Click this program to draw a decreasing tree!" onclick = "decreasing();" />
+	</body>
+</html>
