@@ -1,0 +1,40 @@
+<!-- Write a script that calculates the product of the odd integers from 1 to 15 then outputs text that displays the results. -->
+<html>
+	<head>
+		<title>Product of 15</title>
+		<style>
+			body
+			{
+				font:10px sans-serif;
+			}
+		</style>
+		<script type = "text/javascript">
+		function product()
+		{
+			/*
+			function factorial(n) // This is the straight recursive factorial function
+			{
+				if (n <= 1) return 1; // Define the stopping value for the recursive algorithm
+				return n*factorial(n-1); // Return n * (n-1) ///
+			}
+			*/
+
+			function factorial(n) // This is the straight recursive factorial function for only odd integers starting with 15 (could use modulus also)
+			{
+				if (n <= 1) return 1; // Define the stopping value for the recursive algorithm
+				return n*factorial(n-2); // Return n * (n-2) ///
+			}
+
+			var n = 15; // Create the variable where n = factorials
+			alert(factorial(n)); // Run the factorial function to get 15 factorial ...
+			
+		}; // end the function
+		</script>
+	</head>
+	<body>
+		<h1>Welcome to the integer counting program!</h1>
+		<p>This program will calculate the product for 15 factorial (could easily be customized). Created by Nathaniel Payne!</p>
+		<hr> 
+		<input type = "button" id = "product" value = "CLick to calculate the product of all odd numbers from 1 to 15!" onclick = "product();" />
+	</body>
+</html>
