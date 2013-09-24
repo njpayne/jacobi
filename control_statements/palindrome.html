@@ -1,0 +1,54 @@
+<!-- A palindrome is a number or a text phrase that reads the same backward and forward. For example, each of the following five-digit integers is a palindrome: 12321, 55555, 45554, 11611. Write a script that reads in a five-digit integer and determines whether it’s a palindrome. If the number is not five digits long, display an alert dialog indicating the problem to the user. Allow the user to enter a new value after dismissing the alert dialogue. [hint: try using both division and remainder operations to “pick-off” each digit] -->
+
+<html>
+<head>
+	<meta charset = "UTF-8">
+	<title>Palindrome</title>
+	<style type="text/css">
+		body
+		{
+			font:10px sans-serif;
+		}
+	</style>
+	<script type="text/javascript">
+		function palindrome()
+		{
+			var initial = prompt("Please enter a 5 digit string to check whether it is a palindrome:", ""); // Get the inputted string
+			var palin = new Array(); // Empty array to write the individual palindrome data to ... 
+			
+			while (initial.length != 5) // Create a loop for error checking relating to the length
+			{
+				alert("You did not enter a 5 character digit! All palindromes that this calculator can solve are 5 digits!")
+				initial = prompt("Please enter a 5 digit string to check whether it is a palindrome:", ""); // Ask for the user to re-enter the value again
+			} // end while
+
+			for (var i = 0; i <= initial.length -1; i++) { // Created a potential loop to pull off and isolate individual characters
+				// alert(initial.charAt(i)); Note that the charAt functionality enables you to pick off numbers
+				palin[i] = initial.charAt(i); // Add each character to a new array (note that this step could be skipped)
+			};
+			
+			// Note that I did not check whether the numbers were numeric ... I just checked whether the strings matched
+			if (palin[0] == palin[4]) 
+			{ // Check whether the first digit equals the 5th digit
+				if (palin[1] == palin[3])  // Check whether the second digit equals the 4th digit
+				{
+					document.write("The number that you entered was " + initial + ".");
+					document.write("<br>This number is a palindrome!")
+				}
+			}
+			else // If 1 does not equal 5, and 2 does not equal 4, then the string is not a palindrome!
+			{
+				document.write("The number that you entered was " + initial + ".");
+				document.write("<br>This number is NOT a palindrome!")
+			};
+
+		}; // end main function 
+	</script>
+</head>
+<body>
+	<h1>Welcome to the miles per gallon calculator!</h1>
+	<p> Enter a 5 digit string to check whether an the string is a palindrome. A palindrome is a number that reads the same backwards and forwards. Program written by Nathaniel Payne</p1>
+	<hr> <!-- Input a horizontal rule -->
+	<input type = "button" id = "palindrome" value = "Click to start the program" onclick = "palindrome();" />
+</body>
+</html>
