@@ -1,0 +1,55 @@
+<!-- The process of finding the largest value (i.e. the maximum of a group of values) is used frequently in computer applications. For example, a script that determines the winner of a sales contest would input the number of units sold by each salesperson. The salesperson who sells the most units wins the content. Write a script that inputs a series of 10 single-digit numbers as characters {eg. 6, 7, 3, 6, 4, 2, 5, -7, 1, 2} determines the largest of the numbers, and outputs a message that displays the largest number. Your script should use three variables: counter, number (the current digit input to the script, largest (the largest number found so far). Note that you can also change the program to be sentinel controlled to end whenever the user specifies, dealing with an unspecified data range. -->
+
+<html>
+<head>
+	<meta charset = "UTF-8">
+	<title>Miles Per Gallon</title>
+	<style type="text/css">
+		body
+		{
+			font:10px sans-serif;
+		}
+	</style>
+	<script type="text/javascript">
+		function largest()
+		{
+			var list = new Array(); // Create a new array that will hold the list of the largest numbers
+			var num = prompt("Please enter the total number of units sold by a salesperson: ", "");
+			var counter = 0; // Create a new counter that will have the value of 0
+			while (num != "done")
+			{
+				num = parseInt(num); // Convert the inputted number to a string
+				list[0] = num; // Add the first number to the list
+				counter = counter + 1; // Add one to the counter
+				var num = prompt("Please enter the total number of units sold by a salesperson: ", ""); // Ask the question again ...
+			}
+
+			document.write("Thank you for using the largest number calculator!");
+				
+			list.max = function (values) // In this case, we extend the array prototype and invoke the underlying Math.min method
+				{
+    				return Math.max.apply(Math, values); // We will pass this function some values that it can operate on & it will return the maximum values
+				};
+			var maximum = list.max(list);
+			document.write("<br>The largest value of the array you entered is: " + maximum + " .")
+
+				/* As John Resig noter, here, we use JavaScript's apply function to pass in an array of unlimited arguments						
+				    Array.max = function( array ){
+				        return Math.max.apply( Math, array );
+				    };
+				     
+				    Array.min = function( array ){
+				        return Math.min.apply( Math, array );
+				    };
+				*/
+
+		}; // end main function 
+	</script>
+</head>
+<body>
+	<h1>Welcome to the largest numbers calculator!</h1>
+	<p> Please enter numbers in a row and type the words "done" when you are finished. The program will then help you determine which number from your list is the largest. Program written by Nathaniel Payne</p1>
+	<hr> <!-- Input a horizontal rule -->
+	<input type = "button" id = "miles" value = "Click to start the program" onclick = "largest();" />
+</body>
+</html>
