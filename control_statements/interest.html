@@ -1,0 +1,58 @@
+<!-- A person invests $1000.00 in a savings account yielding 5 percent interest. Assuming that all the interest is left on deposit, calculate and print the amount of money in the account at the end of each year for 10 years. Use the following formula to determine the amounts: a. a = p * (1 + r)n where p is the original amount invested (i.e., the principal), r is the annual interest rate, n is the number of years, a is the amount on deposit at the end of the nth year. b. Create a program which puts the value of the amount on deposit every year for the next 10 years, as well as the count of the year, in a table. -->
+
+<html>
+<head>
+	<meta charset = "UTF-8">
+	<title>Interest Rate</title>
+	<style type="text/css">
+		body
+		{
+			font:10px sans-serif;
+		}
+	</style>
+	<script type="text/javascript">
+		function interest()
+		{
+			// Note that the formula for calculating the annual compound interest is a = p * Math.pow((1 + (r / n)),nt)
+			// The formula for calculating an exponent is Math.pow(x, y) for x ^ y ... In Python .... this is simply x ** y
+
+			var p = parseFloat(prompt("Please enter the initial value of your investment:",""));
+			var n = parseInt(prompt("Please enter how many years you wish to hold the investment for:", ""));
+			var c = parseInt(prompt("How many times per year will the interest be compounded:", ""));
+			var r = parseFloat(prompt("Please enter the annual interest rate (as a float, e.g. 3.5 = 3.5%) that you hope to attain:", ""));
+						
+			document.write('<table width = "40%" border = "1">'); // Create the table
+
+			document.write('<tr>');
+			document.write('<td width = "50">' + "Year" +'</td>');
+			document.write('<td width = "50">' + "Principal Value"+ '</td>');
+			document.write('<td width = "50">' + "Annual Interest Earned" + '</td>');
+			document.write('<td width = "50">' + "Principal + Interest" + '</td>');
+			document.write('</tr>');
+
+			for (var i = 0; i < n; i++) 
+			{
+				var a = p * Math.pow((1 + ((r/100) / c)),(1*c)); // Calculate the interest earned for 1 year
+				var x = a - p;
+				document.write('<tr>');
+				document.write('<td width = "50">' + (i + 1) + '</td>');
+				document.write('<td width = "50">' + p.toFixed(2) + '</td>');
+				document.write('<td width = "50">' + x.toFixed(2) + '</td>');
+				document.write('<td width = "50">' + a.toFixed(2) + '</td>');
+				document.write('</tr>');
+				p = a; // Reset the value of p in the model
+		
+			}
+
+			document.write('</table>');
+
+		}; // end main function 
+	</script>
+</head>
+<body>
+	<h1>Welcome to the interest calculator!</h1>
+	<p> This program will determine the amount of money left in your account at the end of the year (for 10 years) after you specify how much you would like to invest (and other details). Program written by Nathaniel Payne</p1>
+	<hr> <!-- Input a horizontal rule -->
+	<input type = "button" id = "interest" value = "Click to start the program" onclick = "interest();" />
+</body>
+</html>
