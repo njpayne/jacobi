@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<title></title>
+		<style type="text/css">
+			p, ol {margin: 0;}
+			li {display: inline; margin-right: 10px;}
+			/* Note that the CSS style here places a margin of 10 pixels to the right of each li and indicates that they should display inline rather than vertically on the page.*/			
+		</style>
+		<script type="text/javascript">
+		
+		function main()
+		{
+			var value;
+
+		document.writeln("<p>Random Numbers</p><ol>");
+
+		for (var i = 1; i <= 30; i++) 
+		{
+			value = Math.floor(1 + (Math.random() * 6));
+			// The preceeding expression multiplies the result of a call to Math.random by 6 to produce a value from 0.0 up to but no including 6.0. This is called scaling the range of the random numbers. Next, we add 1 to the result to shift the range of numbers to produce a number in the range of 1.0 up to but not including 7.0. Finally, we use the Math.floor() to determine the closest interger not greater than the argument's value. For example, Math.floor(1.75) = 1.... 
+			document.writeln("<ln>" + value + "</li>");
+		}; // end for
+
+		document.writeln("</ol>");
+
+		}
+		
+		</script>
+	</head>
+	<body>
+		<h1>Welcome to the random number generator!</h1>
+		<p>This program generates random numbers using the math object. Program written by Nathaniel Payne.</p1>
+		<hr>
+		<input type = "button" id = "main" value = "Click to generate random numbers!" onclick = "main();" />
+	</body>
+</html>
