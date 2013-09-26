@@ -1,0 +1,42 @@
+<html>
+	<head>
+		<title>What time is it?</title>
+		<meta charset = "utf-8">
+		<style type="text/css">
+			body
+			{
+				font:sans-serif 10px;
+			}
+		</style>
+		<script type = "text/javascript">
+		
+		function startClock() // This is the main function
+		{
+			var today = new Date();
+			var hour = today.getHours(); 
+			var min = today.getMinutes(); 
+			var sec = today.getSeconds();
+			min = checkTime(min);
+			sec = checkTime(sec);
+			document.getElementById('now').innerHTML = ("Today's date: " + today);
+			document.getElementById('clock').innerHTML = hour + ":" + min + ":" + sec;
+			timer = setTimeout('startClock()',500);
+		}
+
+		function checkTime(i) // Create an alternative function that checks the time
+		{
+			if (i<10)
+				i="0" + i;
+			return i;
+		}
+		</script>
+	</head>
+	<body><table align="center" width = "70%"><tr><td><br />
+		<h1>Welcome to the artificial clock!</h1>
+		<p>This program demonstrates how to use the Date() object to tell time. Program created by Nathaniel Payne</p>
+		<hr>
+		<input type ="button" onclick="startClock()" value = "Does anyone know what day it is?"><br />
+		<h3><span id = "now">&nbsp;</span></h3>
+		<h3><span id = "clock">&nbsp;</span></h3>
+	</body>
+</html>
