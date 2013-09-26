@@ -1,0 +1,33 @@
+<html>
+<head>
+	<meta charset = "utf-8">
+	<title>Maximum Function</title>
+	<style type="text/css">
+		body
+		{
+			font:sans-serif 10px;
+		}
+	</style>
+	<script type="text/javascript">
+		function main()
+		{
+			var input1 = parseFloat(prompt("Input number 1:", ""));
+			var input2 = parseFloat(prompt("Input number 2:", ""));
+			var input3 = parseFloat(prompt("Input number 3:", ""));
+			var	maxValue = maximum(input1, input2, input3);
+
+			document.writeln("<p>First number : " + input1 + "</p>" + "<p>Second number : " + input2 + "</p>" + "<p>Third number : " + input3 + "</p>" + "<p>Maximum value : " + maxValue + "</p>");
+		}
+		
+		function maximum(x, y, z) // Create a function which receives 3 values
+		{ // Note that we use the built in JavaScript Math() object here
+			return Math.max(x, Math.max(y,z)); // Return the max value
+		} // End function maximum
+	</script>
+</head>
+<body>
+	<h1>This program demonstrates a simple maximum function!</h1><p>Program is designed to illustrate the use of a simple math function. Program designed by Nathaniel Payne</p>
+		<hr>
+	<input type = "button" id = "main" value = "Click to start!" onclick = "main();" />
+</body>
+</html>
