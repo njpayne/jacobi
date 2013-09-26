@@ -1,0 +1,37 @@
+<!-- Create a function that takes in 2 numbers, divides them, and sends it back -->
+
+<html>
+<head>
+	<title>Simple Function</title>
+	<style type="text/css">
+	body
+	{
+		font: sans-serif 10px;
+	}
+	</style>
+	<script type="text/javascript">	
+	function main()
+	{
+	
+	var x = parseInt(prompt("What is the first number?", "")); // Get the first number
+	var y = parseInt(prompt("What is the second number?", "")); // Get the second number
+
+	quotient(x,y);	// Call the quotient function
+	
+	}
+	
+	function quotient(a,b) // This is the quotient function
+	{ // This function receives 2 values that are passed into it
+		var q = a / b;
+		alert(q.toFixed(2));
+	}
+
+	</script>	
+</head>
+<body>
+	<h1>Welcome to the simple function example program!</h1>
+	<p>This program demonstrates a simple function in JavaScript. Program created by Nathaniel Payne.</p>
+	<hr>
+	<input type = "button" id = "main" value = "Click to start!" onclick = "main();"/>
+</body>
+</html>
