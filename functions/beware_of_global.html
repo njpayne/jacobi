@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<title>Beware of Global</title>
+		<script>
+		function getAges()
+		{
+			var age = 0;
+			age = parseInt(prompt("How old is your grandmother?"));
+			pet(); // Note what happens when you run pet() here versus after the function
+			function pet()
+			{
+				age = parseInt(prompt("How old is your puppy?"));
+				document.getElementById('puppy').innerHTML = (age +10);
+			}
+			document.getElementById('granny').innerHTML = (age + 10);
+			// pet(); Try running pet here versus running it above ...
+		}
+		</script>
+	</head>
+	<body>
+		<h1>This program demonstrates what can happen problematically with global variables</h1>
+		<p>Program is designed to illustrate and allow you to experiment with the issue of variable scoping. Program designed by Nathaniel Payne</p>
+		<hr>
+		<table align="center" width = "70%"><tr><td><br />
+		<input type ="button" onclick="getAges()" value = "Find the age in 10 years"></button><br />
+		<h3>Your granny's age in 10 years: <span id = "granny">&nbsp;</span></h3>
+		<h3>Your puppy's age in 10 years: <span id = "puppy">&nbsp;</span></h3>
+		</td></tr></table>
+	</body>
+</html>
