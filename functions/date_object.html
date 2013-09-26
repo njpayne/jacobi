@@ -1,0 +1,50 @@
+<!-- The math object has a bunch of different methods attached to it ... Math() Math.something .... something is a method
+abs()
+floor()
+random()
+pow()
+round()
+sqrt()
+
+Some other common objects that we will use ...
+date object .... Date()
+getDate()
+getDay()
+getFullYear()
+setDate()
+getHours()
+toString() ... Convert a date to a string
+toTimeString() ... Converts that time portion of a Date object to a string ... 
+-->
+
+<html>
+	<head>
+		<title>Looking at the date object</title>
+		<script text = "type/javascript">
+		
+		function begin()
+		{
+			var now = new Date(); 
+			var before = new Date(); 
+			var later = new Date();
+			
+			before.setFullYear(1812, 2, 3);
+			later.setFullYear(2095,6,15);
+			
+			document.getElementById('now').innerHTML = ("Today's date: " + now);
+			document.getElementById('before').innerHTML = ("In the past it was: " + before);
+			document.getElementById('later').innerHTML = ("One day it will be: " + later);
+		}
+		
+		</script>
+	</head>
+		<body><table align="center" width = "70%"><tr><td><br />
+			<h1>Welcome the the date program!</h1>
+			<p1>This program introduces users to the Date object. Program created by Nathaniel Payne.</p1>
+			<hr>
+			<input type ="button" onclick="begin()" value = "Does anyone know what day it is?"><br />
+			<h3><span id = "now">&nbsp;</span></h3>
+			<h3><span id = "before">&nbsp;</span></h3>
+			<h3><span id = "later">&nbsp;</span></h3>
+		</body>
+</html>
