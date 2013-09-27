@@ -1,0 +1,37 @@
+<!-- Write a script that prompts the user for the radius of a circle, uses a function circleArea to calculate the area of the circle, and prints the area of the circle.-->
+
+<html>
+<head>
+	<meta charset = "utf-8">
+	<title>Area demonstration program</title>
+	<style type="text/css">
+		body 
+		{
+			font: sans-serif 10px; 
+		}
+	</style>
+	<script type="text/javascript">
+
+	function main()
+	{
+		r = parseFloat(prompt("Please enter the radius of the circle", ""));
+		var radius = area(r);
+		document.getElementById('circle').innerHTML = ("The radius of the circle is: " + radius); // Call the area function and modify the document object		
+	}
+
+	function area(a) // Calculate the area of a circle
+	{
+		var b = Math.PI * Math.pow(a,2); // Area of a circle is pi * r^2
+		return b; // Return the radis of the circle
+	}
+
+	</script>
+</head>
+<body>
+	<h1>This program demonstrates how to calculate the area of a circle!</h1>
+	<p>Give the program a radius calculate the area of a circle. Solution prepared by Nathaniel Payne.</p1>
+	<hr>
+	<input type = "button" id = "item" value = "Click to calculate an area" onclick = "main();"/>
+	<h3><span id = "circle">&nbsp;</span></h3> <!-- Grab the output from the element 'circle' -->
+	</body>
+</html>
