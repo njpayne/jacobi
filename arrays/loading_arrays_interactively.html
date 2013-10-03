@@ -1,0 +1,22 @@
+<!-- Create an example which loads an array interactively -->
+
+<html>
+<head>
+	<title>Load Interactively</title>
+	<script type="text/javascript">
+		var names = new Array(); // Create the new array
+		var count = parseInt(prompt("How many users will your enter:",""));
+		var i = 0; // Create the initial counter
+
+		for (i = 0; i < count; i++) // Create the for loop to loop through
+		{
+			names[i] = prompt("Please enter the users name:", "");
+		};
+
+		alert(names); // Look at the values in the names array
+	</script>
+</head>
+<body>
+	<!-- Nothing here -->
+</body>
+</html>
