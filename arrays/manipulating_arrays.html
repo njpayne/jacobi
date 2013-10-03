@@ -1,0 +1,50 @@
+<!-- Create an array named numbers with three elements that are declared and initialized. Create a variable called results that shows the results -->
+
+<html>
+<head>
+	<style type="text/css">
+		body
+		{
+			font:sans-serif 10px;
+		}
+	</style>
+	<title>Manipulate Array</title>
+	<script type="text/javascript">
+		// Some key points ... Arrays are objects. Because they are objects
+		// they have methods and properties associated with them.
+		
+		// Note also that we can refer to an array by name without brackets
+		// We can say numbers ... rather than numbers[]
+
+		// The length property is very important when dealing with an array
+		// We can use the array_name.length to see things ... 
+		
+		var numbers = new Array(); // Create the array
+		numbers[0] = 4; // Populate the value of the first index item
+		numbers[1] = 5;
+		numbers[2] = 6;
+		var result = 0;
+		
+		// Add the values in the two positions together
+		result = numbers[0] + numbers[1] ;
+		document.write("a) result = " + result + "<br />");
+		result = numbers[1] * numbers[2] ;
+		document.write("b) result = " + result + "<br />");
+		result = numbers[2] % numbers[0] ;
+		document.write("c) result = " + result + "<br />");
+
+		// Let's look at some array properties
+		alert(numbers); // This should show all values of the array
+		alert(numbers[1]); // Remember the first position in an array is 0
+		alert(numbers.length)
+
+		// Let's say that we want to put an array inside an array ... How?
+		numbers[3] = [1,2,3,4,5,6,7,8];
+		alert(numbers[3]);
+		alert(numbers);
+	</script>
+</head>
+<body>
+	<!-- There is not body section in this script -->
+</body>
+</html>
