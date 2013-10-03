@@ -1,0 +1,47 @@
+<!-- This will be an example showing parallel arrays. Let me put in the names of students in the class and their grades for the semester. Put these into two parallel arrays (names[] and grades[]). -->
+
+<html>
+<head>
+	<meta charset = 'utf=8'>
+	<title>Parallel Array</title>
+	<script type="text/javascript">
+		var names = new Array(); // This array holds the names
+		var grades = new Array(); // This array holds the grades
+		var high = 0; // This keeps track of the value of the highest value
+		var index = 0; // This keeps track of the index of the highest value
+		var k = 0;
+
+		// This could be done before the loop ..
+		//names[k] = prompt("Please enter the students name or enter an asterisk(*) when you are done: ","");
+
+		while(names[k] != "*") // This loop will terminate when * is entered
+		{
+			names[k] = prompt("Please enter the students name or enter an asterisk(*) when you are done: ","");
+			
+			if (names[k] == "*") // If the user selects *, exit the program
+			{
+				break; // Exit from the while loop
+			}
+			
+			grades[k] = parseFloat(prompt("Enter the student's grade: ")); 
+			// Enter the grade in the form of a float
+
+			document.write("Name of student: " + (k + 1) + " : " + names[k] + " grade: " + grades[k] + "<br />"); // Review the input
+
+			if (grades[k] > high) 
+				{
+					index = k; // Set the index to k
+					high = grades[index]; // Set the highest grade to high
+				};
+
+			k = k + 1; // Add one to the counter
+		}
+		document.write("The highest grade in the class is: " + grades[index] + "<br />");
+		document.write(names[index] + " is the high achieving student! <br />");
+
+	</script>
+</head>
+<body>
+	<!-- There is no body -->
+</body>
+</html>
