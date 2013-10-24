@@ -1,0 +1,161 @@
+<html>
+<head>
+	<title>$.ajax() jQuery AJAX Demo</title>
+	<link rel="stylesheet" type="text/css" href="../presentation/demo.css"></link>
+	<script type="text/javascript" src="../assets/jquery-1.3.1.min.js"></script>
+	<script type="text/javascript">
+		
+		$(
+			function(){
+				// Get a reference to the content div (into which we will load content).
+				var jContent = $( "#content" );
+								
+				// Hook up link click events to load content.
+				$( "a" ).click(
+					function( objEvent ){
+						var jLink = $( this );
+						
+						// Clear status list.
+						$( "#ajax-status" ).empty();
+						
+						// Launch AJAX request.
+						$.ajax(
+							{
+								// The link we are accessing.
+								url: jLink.attr( "href" ),
+								
+								// The type of request.
+								type: "get",
+								
+								// The type of data that is getting returned.
+								dataType: "html",
+								
+								error: function(){
+									ShowStatus( "AJAX - error()" );
+									
+									// Load the content in to the page.
+									jContent.html( "<p>Page Not Found!!</p>" );
+								},
+								
+								beforeSend: function(){
+									ShowStatus( "AJAX - beforeSend()" );
+								},
+								
+								complete: function(){
+									ShowStatus( "AJAX - complete()" );
+								},
+								
+								success: function( strData ){
+									ShowStatus( "AJAX - success()" );
+									
+									// Load the content in to the page.
+									jContent.html( strData );
+								}
+							}							
+							);
+						
+						// Prevent default click.
+						return( false );					
+					}
+					);
+				
+			}
+			);
+			
+			
+		// I show the status on the screen.
+		function ShowStatus( strStatus ){
+			var jStatusList = $( "#ajax-status" );
+			
+			// Prepend the paragraph.
+			jStatusList.prepend( "<p>" + strStatus + "</p>" );
+		}
+		
+	</script>
+</head>
+<body>
+
+	<h1>
+		$.ajax() jQuery AJAX Demo
+	</h1>
+	
+	<p>
+		<a href="about.htm">About</a> -
+		<a href="contact.htm">Contact</a> -
+		<a href="office.htm">Office</a> - 
+		<a href="error.aspx">Error</a>
+	</p>
+	
+	<div id="content" style="float: left ; width: 50% ;">
+		<p>
+			Click on the above links to load content.
+		</p>		
+	</div>	
+	
+	<div id="ajax-status" style="float: right ; width: 45% ;">
+		
+	</div>
+	
+	<br clear="all" />
+	
+<pre>
+$(
+	function(){
+		// Get a reference to the content div (into which we will load content).
+		var jContent = $( "#content" );
+						
+		// Hook up link click events to load content.
+		$( "a" ).click(
+			function( objEvent ){
+				var jLink = $( this );
+				
+				// Clear status list.
+				$( "#ajax-status" ).empty();
+				
+				// Launch AJAX request.
+				<strong>$.ajax(</strong>
+					{
+						// The link we are accessing.
+						<strong>url</strong>: jLink.attr( "href" ),
+						
+						// The type of request.
+						<strong>type</strong>: "get",
+						
+						// The type of data that is getting returned.
+						<strong>dataType</strong>: "html",
+						
+						<strong>error</strong>: function(){
+							ShowStatus( "AJAX - error()" );
+							
+							// Load the content in to the page.
+							jContent.html( "&lt;p>Page Not Found!!&lt;/p>" );
+						},
+						
+						<strong>beforeSend</strong>: function(){
+							ShowStatus( "AJAX - beforeSend()" );
+						},
+						
+						<strong>complete</strong>: function(){
+							ShowStatus( "AJAX - complete()" );
+						},
+						
+						<strong>success</strong>: function( strData ){
+							ShowStatus( "AJAX - success()" );
+							
+							// Load the content in to the page.
+							jContent.html( strData );
+						}
+					}							
+					);
+				
+				// Prevent default click.
+				return( false );					
+			}
+			);
+		
+	}
+	);
+</pre>
+	
+</body>
+</html>
